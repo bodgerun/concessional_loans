@@ -1,0 +1,7 @@
+__pycache__/
+.env
+.venv/
+.thinking/
+uploads/
+test_assignment_backend.txt
+technical_specification.txt

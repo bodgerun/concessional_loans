@@ -1,0 +1,28 @@
+services:
+  api:
+    build: .
+    ports:
+      - "${APP_PORT:-8000}:8000"
+    environment:
+      DATABASE_URL: ${DATABASE_URL:-postgresql+psycopg2://postgres:postgres@db:5432/concessional_loans}
+      APP_HOST: ${APP_HOST:-0.0.0.0}
+      APP_PORT: 8000
+      UPLOAD_DIR: ${UPLOAD_DIR:-uploads}
+    depends_on:
+      - db
+    volumes:
+      - ./uploads:/app/uploads
+
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: concessional_loans
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
