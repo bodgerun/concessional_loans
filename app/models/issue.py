@@ -32,9 +32,7 @@ class Issue(Base):
     )
     document_id: Mapped[uuid.UUID | None] = mapped_column(
         UUID(as_uuid=True),
-        ForeignKey(
-            "documents.id", name="fk_issues_document_id", ondelete="SET NULL"
-        ),
+        ForeignKey("documents.id", name="fk_issues_document_id", ondelete="SET NULL"),
         nullable=True,
         index=True,
     )
