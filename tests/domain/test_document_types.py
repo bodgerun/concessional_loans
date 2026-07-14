@@ -43,7 +43,9 @@ def test_returns_none_for_unrecognized_names(filename: str) -> None:
 
 
 def test_uses_stem_ignoring_path_and_extension() -> None:
-    assert detect_document_type("uploads/batch_1/договор_47.pdf") == DocumentType.CONTRACT
+    assert (
+        detect_document_type("uploads/batch_1/договор_47.pdf") == DocumentType.CONTRACT
+    )
     assert detect_document_type("invoice") == DocumentType.INVOICE
 
 
@@ -55,7 +57,9 @@ def test_normalizes_yo_to_ye() -> None:
 
 def test_specification_wins_over_overlapping_tokens() -> None:
     # "спецификация" is checked before "договор"; both tokens present.
-    assert detect_document_type("спецификация_договор.pdf") == DocumentType.SPECIFICATION
+    assert (
+        detect_document_type("спецификация_договор.pdf") == DocumentType.SPECIFICATION
+    )
 
 
 def test_does_not_match_token_inside_another_word() -> None:

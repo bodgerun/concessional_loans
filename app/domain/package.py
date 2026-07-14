@@ -18,7 +18,9 @@ class Program(StrEnum):
     REGIONAL = "regional"
 
 
-_ALLOWED_EXTENSIONS: frozenset[str] = frozenset({".pdf", ".docx", ".jpg", ".jpeg", ".png"})
+_ALLOWED_EXTENSIONS: frozenset[str] = frozenset(
+    {".pdf", ".docx", ".jpg", ".jpeg", ".png"}
+)
 _MAX_FILE_SIZE_BYTES: int = 20 * 1024 * 1024  # 20 MB
 _MAX_FILE_SIZE_MB: int = _MAX_FILE_SIZE_BYTES // (1024 * 1024)
 
@@ -122,9 +124,7 @@ def _validate_size(filename: str, size_bytes: int) -> Issue | None:
     if size_bytes > _MAX_FILE_SIZE_BYTES:
         return Issue(
             level=IssueLevel.ERROR,
-            message=(
-                f"Размер файла превышает {_MAX_FILE_SIZE_MB} МБ: «{filename}»"
-            ),
+            message=(f"Размер файла превышает {_MAX_FILE_SIZE_MB} МБ: «{filename}»"),
         )
     return None
 
