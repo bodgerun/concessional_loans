@@ -14,18 +14,12 @@ def _messages(result: PackageCheckResult) -> list[str]:
 
 
 def _error_messages(result: PackageCheckResult) -> list[str]:
-    return [
-        issue.message
-        for issue in result.issues
-        if issue.level == IssueLevel.ERROR
-    ]
+    return [issue.message for issue in result.issues if issue.level == IssueLevel.ERROR]
 
 
 def _warning_messages(result: PackageCheckResult) -> list[str]:
     return [
-        issue.message
-        for issue in result.issues
-        if issue.level == IssueLevel.WARNING
+        issue.message for issue in result.issues if issue.level == IssueLevel.WARNING
     ]
 
 

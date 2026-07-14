@@ -66,7 +66,10 @@ def _has_token(stem: str, token: str) -> bool:
     Return True if `token` appears in `stem` as a whole word,
     not as part of another word.
     """
-    return re.search(
-        rf"(?<![{_TOKEN_CHARS}]){re.escape(token)}(?![{_TOKEN_CHARS}])",
-        stem,
-    ) is not None
+    return (
+        re.search(
+            rf"(?<![{_TOKEN_CHARS}]){re.escape(token)}(?![{_TOKEN_CHARS}])",
+            stem,
+        )
+        is not None
+    )
