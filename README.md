@@ -8,6 +8,7 @@
 - FastAPI
 - PostgreSQL
 - Docker Compose
+- pytest (тесты доменной логики)
 
 ## Что есть сейчас
 
@@ -19,9 +20,10 @@
   - определение типа документа по имени файла;
   - проверка формата и размера файла;
   - проверка комплектности пакета по программе;
-  - формирование статуса и причины (`approved` / `rejected`).
+  - формирование статуса и причины (`approved` / `rejected`);
+- pytest-тесты для `app/domain/` в `tests/domain/`.
 
-Эндпоинты `/api/checks`, модели БД, миграции и тесты пока не реализованы.
+Эндпоинты `/api/checks`, модели БД и миграции пока не реализованы.
 
 ## Запуск
 
@@ -31,6 +33,23 @@ docker compose up --build
 ```
 
 API: http://localhost:8000/
+
+## Тесты
+
+Из корня репозитория (нужны зависимости из `requirements.txt`):
+
+```bash
+python -m venv .venv
+source .venv/bin/activate   # Windows: .venv\Scripts\activate
+pip install -r requirements.txt
+pytest
+```
+
+Запуск только доменных тестов:
+
+```bash
+pytest tests/domain/
+```
 
 ## Переменные окружения
 
