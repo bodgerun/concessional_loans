@@ -23,9 +23,11 @@
   - формирование статуса и причины (`approved` / `rejected`);
 - SQLAlchemy-модели: `checks`, `documents`, `issues` (`app/models/`);
 - Alembic-миграция `0001_initial` (применяется при старте контейнера API);
-- pytest-тесты для `app/domain/` в `tests/domain/`.
+- локальное файловое хранилище `app/services/storage.py`
+  (`UPLOAD_DIR/{check_id}/{filename}`);
+- pytest-тесты для `app/domain/` и `app/services/` в `tests/`.
 
-Эндпоинты `/api/checks` и файловое хранилище пока не реализованы.
+Эндпоинты `/api/checks` пока не реализованы.
 
 ## Запуск
 

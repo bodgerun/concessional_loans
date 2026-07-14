@@ -1,6 +1,5 @@
 from fastapi import FastAPI
 
-
 app = FastAPI(
     title="Concessional Loans Document Check API",
     version="0.1.0",
