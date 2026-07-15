@@ -25,9 +25,14 @@
 - Alembic-миграция `0001_initial` (применяется при старте контейнера API);
 - локальное файловое хранилище `app/services/storage.py`
   (`UPLOAD_DIR/{check_id}/{filename}`);
-- pytest-тесты для `app/domain/` и `app/services/` в `tests/`.
-
-Эндпоинты `/api/checks` пока не реализованы.
+- оркестрация проверки `app/services/check_service.py`;
+- эндпоинты:
+  - `POST /api/checks` — загрузка пакета и запуск проверки (`201`);
+  - `GET /api/checks` — список проверок (`200`);
+  - `GET /api/checks/{id}` — полный результат конкретной проверки (`200`);
+- HTTP-ошибки: `400` (нет файлов), `404` (проверка не найдена),
+  `422` (невалидный `program` / UUID / форма);
+- pytest-тесты для `app/domain/`, `app/services/` и `app/api/` в `tests/`.
 
 ## Запуск
 
