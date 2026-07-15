@@ -138,7 +138,9 @@ def _check_completeness(
     return [
         Issue(
             level=IssueLevel.ERROR,
-            message=f"Отсутствует обязательный документ: {DOCUMENT_TYPE_LABELS[doc_type]}",
+            message=(
+                f"Отсутствует обязательный документ: {DOCUMENT_TYPE_LABELS[doc_type]}"
+            ),
         )
         for doc_type in missing
     ]
